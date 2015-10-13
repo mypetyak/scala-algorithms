@@ -20,13 +20,24 @@ object InsertionSort {
 
   def sort(a: Array[Int]) : Unit = {
     for (i <- 1 to a.length-1) {
+      // Track the value we're inserting with x
       val x = a(i)
-      var j = i
-      while (j > 0 && a(j-1) > x) {
-        a(j) = a(j-1)
-        j-=1
+
+      /** Recursively pushes element leftwards in a (partially) sorted array
+       *  by shifting the greater-than values to the right
+       */
+      def pushLeft(a: Array[Int], loc: Int, element: Int) : Int = {
+        if (loc > 0 && a(loc-1) > element){
+          // Move elements rightwards to make space on the left
+          a(loc) = a(loc-1)
+          pushLeft(a, loc-1, element)  
+        }
+        else {
+          return loc
+        }
       }
-      a(j) = x
+
+      a(pushLeft(a, i, x)) = x
     }
   }
 
