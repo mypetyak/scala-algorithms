@@ -19,7 +19,7 @@ object Quicksort {
 
   /** Swaps two values in an array */
   def swap(a: Array[Int], pos1: Int, pos2: Int) : Unit = {
-    val stash: Int = a(pos1)
+    val stash = a(pos1)
     a(pos1) = a(pos2)
     a(pos2) = stash
   }
