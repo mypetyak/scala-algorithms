@@ -24,7 +24,12 @@ object Quicksort {
     a(pos2) = stash
   }
 
-  /** Performs recursive quicksort on an array */
+  /** Performs recursive quicksort on an array 
+   *
+   * There's an opportunity for limiting space complexity to
+   * O(ln(n)) here if we recurse on the larger partition last
+   * (tail recursion).
+   *  */
   def quicksort(a: Array[Int], low: Int, hi: Int) : Unit = {
     if (low < hi) {
       val p = partition(a, low, hi)
@@ -38,6 +43,11 @@ object Quicksort {
    *  Chooses a pivot, moves all values less than
    *  the pivot to its left, and moves all values
    *  greater than the pivot to its right.
+   *
+   *  To optimize: choose pivot corresponding to a median
+   *  value of some sample. This helps ensure the 
+   *  partitioning results in similarly-sized sub-arrays,
+   *  and thus the optimal O(n*ln(n)) performance.
    *
    *  @return index (location) of pivot in partitioned array
    */
