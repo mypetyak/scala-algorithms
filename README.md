@@ -24,3 +24,11 @@ Merge sort is a divide an conquer comparison sort that exhibits O(N*ln(n)) behav
 
 ##Use Cases:
 Merge sort is ideal for cases where data must be accessed sequentially, such as when reading data from slow disk or linked lists. One trade-off is the need for O(n) auxiliary space in most applications. The algorithm is the default sorting mechanism in Perl, and it plays a role in the default algorithms for Python, Java, and Octave. Can be parallelized due to divide and conquer design.
+
+#Bubble Sort
+
+##Summary:
+Bubble sort is an exchange sort that exhibits O(n^2) in both average and worst cases. It is rarely used due to its poor performance (worse than Insertion sort). Bubble sort is stable.
+
+##Use Cases:
+Because of its terrible time complexity, Bubble sort is rarely used. One advantage is that its worst case auxiliary space complexity is O(1). It behaves reasonably fast on nearly-sorted data, but its use is rare.
