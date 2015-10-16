@@ -40,3 +40,11 @@ Heap sort is a comparison sort that exhibits O(n*log(n)) behavior in average and
 
 ##Use Cases:
 Heap sort is quite efficient, sorts in place (auxiliary space complexity is O(1)), and has better worst case time complexity than quicksort. Typically, however, it is slightly slower than quicksort. Less space is required than for merge sort. 
+
+#Selection Sort
+
+##Summary:
+Selection sort is an in-place algorithm that exhibits O(n^2) performance in the best, average, and worst cases. Run time is actually always worst case. Though it typically runs faster than bubble sort, it is still very slow on large datasets. Basic selection sort is not stable.
+
+##Use Cases:
+The low time constant makes Selection sort outperform divide-and-conquer algorithms on very small (typically < 20 elements) arrays, so it is often paired with a d&c algorithm for versatility. Because the runtime is solely determined by the length of the array, this sort could be attractive for use in real-time systems. Auxiliary space complexity is limited to O(1), but the slow general performance limits the algorithm's use.
