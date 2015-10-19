@@ -5,6 +5,10 @@
  * Iterate over the input, segregating elements into a fixed number of ordinal
  * buckets. The sort each bucket. Iterate over the buckets in order,
  * reconstructing the original input in sorted order.
+ *
+ * Note that, rather than recursively sorting each bucket, another solution
+ * is to concatenate the buckets and run Insertion sort on the new (nearly-
+ * sorted) result.
  **/
 import scala.collection.mutable.ArrayBuffer
 
