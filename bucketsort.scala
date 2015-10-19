@@ -10,7 +10,7 @@ import scala.collection.mutable.ArrayBuffer
 
 object BucketSort {
   def main(args: Array[String]) {
-    var mess = Array(3, 9, 8, 13, 2, 5, 4);
+    var mess = Array(3, 9, 8, 13, 2, 5, 4, 12);
 
     // Move contents to an ArrayBuffer since
     // our recursive sort requires a mutable
@@ -18,39 +18,37 @@ object BucketSort {
     // in a hybrid bucketsort/insertionsort
     val ab = new ArrayBuffer[Int]
     ab ++= mess
-    sort(ab, 5)
+    sort(ab, 5, 2, 13)
 
     ab.foreach( println )
   }
 
-  def sort(a: ArrayBuffer[Int], n_buckets: Int) : Unit = {
+  def sort(a: ArrayBuffer[Int], n_buckets: Int, min: Int, max: Int) : Unit = {
     if (a.length < 2) return //a bucket could be empty, or have one element
-    
-    var (max, min) = (a(0), a(0))
-    // find max and min in a single iteration through 'a'
-    for (value <- a) {
-      if (value > max) max = value
-      else if(value < min) min = value
-    }
 
-    val buckets = new Array[ArrayBuffer[Int]](n_buckets)
+    val buckets = ArrayBuffer.fill(n_buckets,0)(0)
     for (i <- 0 until n_buckets) {
       buckets(i) = new ArrayBuffer[Int]
     }
 
     for (value <- a) {
-      val bucket = buckets((value - min) * (n_buckets - 1) / (max - min))
-      bucket += value
+      val bucket_no = math.min((value - min) * n_buckets / (max - min), n_buckets - 1)
+      buckets(bucket_no) += value
     }
 
     // we'll overwrite 'a' to save space
+    val width = (max - min) / n_buckets
     var i = 0
+    var b = 0
     for (bucket <- buckets) {
-      sort(bucket, n_buckets)
+      sort(bucket, n_buckets, 
+           min + b * (max - min) / n_buckets, 
+           min + (b + 1) * (max - min) / n_buckets )
       for (value <- bucket) {
         a(i) = value
         i+=1
       }
+      b+=1
     }
   }
 

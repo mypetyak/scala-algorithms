@@ -48,3 +48,11 @@ Selection sort is an in-place algorithm that exhibits O(n^2) performance in the 
 
 ##Use Cases:
 The low time constant makes Selection sort outperform divide-and-conquer algorithms on very small (typically < 20 elements) arrays, so it is often paired with a d&c algorithm for versatility. Because the runtime is solely determined by the length of the array, this sort could be attractive for use in real-time systems. Auxiliary space complexity is limited to O(1), but the slow general performance limits the algorithm's use.
+
+#Bucket Sort
+
+##Summary:
+Bucket sort is a distribution sort that exhibits O(n^2) worst case, but O(n+k) average performance, where k is the number of buckets. While it can be extremely fast, Bucket sort requires some additional information than comparison sorts do; namely, the maximum value of the data to be sorted. Bucket sort is stable.
+
+##UseCases:
+Because performance is directly correlated to how evenly data is distributed across the k buckets, Bucket sort is best deployed on values in a known domain, such as grade point averages, alphanumeric characters, etc, especially where data is uniformly distributed across the domain. It is frequently used as a first pass before then calling Insertion sort, as a way to boost the performance of the latter (which improves with nearly-sorted data).
