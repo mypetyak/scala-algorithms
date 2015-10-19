@@ -19,9 +19,12 @@ object BinarySearch {
   def search(a: Array[Int], target: Int, lo: Int, hi: Int): Int = {
     if(hi < lo) return -1
     val mid = (hi-lo)/2 + lo
-    if(target < a(mid)){ return search(a, target, lo, mid-1);}
-    else if(target > a(mid)){ return search(a, target, mid+1, hi);}
-    else return mid
+    
+    target match {
+      case t if t < a(mid) => return search(a, target, lo, mid-1)
+      case t if t > a(mid) => return search(a, target, mid+1, hi)
+      case t if t == a(mid) => return mid
+    }
   }
 
 }
