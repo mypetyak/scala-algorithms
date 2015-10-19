@@ -9,6 +9,10 @@
  * Note that, rather than recursively sorting each bucket, another solution
  * is to concatenate the buckets and run Insertion sort on the new (nearly-
  * sorted) result.
+ *
+ * Also note that this algorithm (as implemented) only works for positive
+ * numbers. For more versatility, a simple shift could be used to ensure
+ * negative values are properly handled.
  **/
 import scala.collection.mutable.ArrayBuffer
 
@@ -21,8 +25,14 @@ object BucketSort {
     // data structure. This could be avoided
     // in a hybrid bucketsort/insertionsort
     val ab = new ArrayBuffer[Int]
-    ab ++= mess
-    sort(ab, 5, 2, 13)
+    val n_buckets = 5
+    var (min, max) = (mess(0), mess(0))
+    for (value <- mess) {
+      ab += value
+      if (value < min) min = value
+      else if (value > max) max = value
+    }
+    sort(ab, n_buckets, min, max)
 
     ab.foreach( println )
   }
