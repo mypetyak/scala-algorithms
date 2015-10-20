@@ -28,12 +28,11 @@ object BubbleSort {
 
     while (swapped) {
       swapped = false
-      for (i <- 0 until hi) {
-        if (a(i) > a(i+1)) {
-          swapped = true
-          swap(a, i, i+1)
-          hi = i
-        }
+      for (i <- 0 until hi
+           if a(i) > a(i+1)) {
+        swapped = true
+        swap(a, i, i+1)
+        hi = i
       }
     }
   }
