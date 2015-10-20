@@ -54,5 +54,13 @@ The low time constant makes Selection sort outperform divide-and-conquer algorit
 ##Summary:
 Bucket sort is a distribution sort that exhibits O(n^2) worst case, but O(n+k) average performance, where k is the number of buckets. While it can be extremely fast, Bucket sort requires some additional information than comparison sorts do; namely, the maximum value of the data to be sorted, and worst case space complexity is O(n*k). Bucket sort is stable.
 
-##UseCases:
+##Use Cases:
 Because performance is directly correlated to how evenly data is distributed across the k buckets, Bucket sort is best deployed on values in a known domain, such as grade point averages, alphanumeric characters, etc, especially where data is uniformly distributed across the domain. It is frequently used as a first pass before then calling Insertion sort, as a way to boost the performance of the latter (which improves with nearly-sorted data).
+
+#Counting Sort
+
+##Summary:
+Counting sort is a distribution sort (like Bucket sort) used to sort integers. It exhibits O(n+k) time in all cases, in exchange for using total space of O(n+k), where k is the unique number of keys between the maximum and minimum values to be sorted. Because two equivalent integers are identical, Counting sort can be considered a stable sort.
+
+##Use Cases:
+Counting sort can only be used to sort integers because the result is assembled using an array index value, rather than the original elements. Because of its time and space complexities, Counting sort is most efficient when k << n (ie, when max and min values in the set n are close together, especially when there are many duplicates in n).
