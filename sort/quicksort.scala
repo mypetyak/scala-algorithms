@@ -18,7 +18,7 @@ object Quicksort {
   }
 
   /** Swaps two values in an array */
-  def swap(a: Array[Int], pos1: Int, pos2: Int) : Unit = {
+  def swap(a: Array[Int], pos1: Int, pos2: Int): Unit = {
     val stash = a(pos1)
     a(pos1) = a(pos2)
     a(pos2) = stash
@@ -30,7 +30,7 @@ object Quicksort {
    * O(ln(n)) here if we recurse on the larger partition last
    * (tail recursion).
    *  */
-  def quicksort(a: Array[Int], low: Int, hi: Int) : Unit = {
+  def quicksort(a: Array[Int], low: Int, hi: Int): Unit = {
     if (low < hi) {
       val p = partition(a, low, hi)
       quicksort(a, low, p-1)
@@ -51,13 +51,13 @@ object Quicksort {
    *
    *  @return index (location) of pivot in partitioned array
    */
-  def partition(subArray: Array[Int], low: Int, hi: Int) : Int = {
+  def partition(subArray: Array[Int], low: Int, hi: Int): Int = {
     val pivot = hi;
     var i = low;
     for (
       j <- low to hi
       if subArray(j) < subArray(pivot)
-    ) {swap(subArray, i, j); i+=1;}
+    ) {swap(subArray, i, j); i+=1}
 
     // Lastly, move pivot value to the dividing line at i
     swap(subArray, i, pivot);

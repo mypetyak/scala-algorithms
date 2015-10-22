@@ -35,6 +35,7 @@ object HeapSort {
   }
 
   /**Pushes an illegally located element down the heap to restore heap property.*/
+  @annotation.tailrec
   def heapify(a: Array[Int], loc: Int, lastLeaf: Int): Unit = {
     val l = left(loc) 
     val r = right(loc)

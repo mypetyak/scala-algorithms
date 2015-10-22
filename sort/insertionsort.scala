@@ -22,14 +22,15 @@ object InsertionSort {
     /** Recursively pushes element leftwards in a (partially) sorted array
      *  by shifting the greater-than values to the right
      */
+    @annotation.tailrec
     def pushLeft(a: Array[Int], loc: Int, element: Int) : Int = {
-      if (loc > 0 && a(loc-1) > element){
+      if (loc <= 0 || a(loc-1) < element){
+        return loc
+      }
+      else {
         // Move elements rightwards to make space on the left
         a(loc) = a(loc-1)
         pushLeft(a, loc-1, element)  
-      }
-      else {
-        return loc
       }
     }
   
