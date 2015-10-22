@@ -64,3 +64,11 @@ Counting sort is a distribution sort (like Bucket sort) used to sort integers. I
 
 ##Use Cases:
 Counting sort can only be used to sort integers because the result is assembled using an array index value, rather than the original elements. Because of its time and space complexities, Counting sort is most efficient when k << n (ie, when max and min values in the set n are close together, especially when there are many duplicates in n).
+
+#Radix Sort
+
+##Summary:
+Radix sort is a non-comparison sort used to sort integers. It has a few flavors, the most common example of which is Least Significant Digit sort, which exhibits O(n*k) time in all cases. Space complexity is O(k+n), where k is the length of the keys to be sorted (ie, the word size).
+
+##Use Cases:
+Similar to Counting sort (often a component), the Radix sort can only be used to sort data represented by integers. It can be very fast when k is limited, but this requires some advance knowledge of the dataset. If k > log(n), comparison sorts may perform better.
