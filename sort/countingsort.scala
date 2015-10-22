@@ -22,21 +22,23 @@ object CountingSort {
       return value - min
     }
 
+    val result: Array[Int] = new Array[Int](a.length)
+
     // Count how many of each key we have
-    val count: Array[Int] = new Array[Int](max - min + 2)
+    val count: Array[Int] = new Array[Int](max - min + 1)
     for (e <- a) {
       // leave the first position = 0; we ultimately ignore last position
-      count(key(e)+1) += 1 
+      count(key(e)) += 1 
     }
 
     // Add preceding counts to compute offset for each key
-    for (i <- 1 to (max-min+1)) {
+    for (i <- 1 to (max-min)) {
       count(i) += count(i-1)
     }
 
     // Assemble results using offset and sorted keys
-    val result: Array[Int] = new Array[Int](a.length)
-    for (e <- a) {
+    for (e <- a.reverseIterator) {
+      count(key(e)) -= 1
       result(count(key(e))) = e
     }
     return result
