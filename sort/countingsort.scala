@@ -26,10 +26,7 @@ object CountingSort {
 
     // Count how many of each key we have
     val count: Array[Int] = new Array[Int](max - min + 1)
-    for (e <- a) {
-      // leave the first position = 0; we ultimately ignore last position
-      count(key(e)) += 1 
-    }
+    a.foreach( (e: Int) => count(key(e)) += 1)
 
     // Add preceding counts to compute offset for each key
     for (i <- 1 to (max-min)) {
