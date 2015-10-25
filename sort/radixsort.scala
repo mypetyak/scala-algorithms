@@ -34,10 +34,8 @@ object RadixSort {
     for (digit <- 1 to max_digits) {
       val count  = new Array[Int](10)
       // Count how many of each key we have
-      for (e <- from) {
-        count(key(e, digit)) += 1 
-      }
-
+      from.foreach( (e: Int) => count(key(e, digit)) += 1 )
+      
       // Add preceding counts to compute offset for each key
       for (i <- 1 until 10) {
         count(i) += count(i-1)
